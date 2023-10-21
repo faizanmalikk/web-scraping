@@ -1,5 +1,6 @@
 "use client"
 
+import { scrapeAndStoreProduct } from '@/lib/actions';
 // import { scrapeAndStoreProduct } from '@/lib/actions';
 import { FormEvent, useState } from 'react'
 
@@ -33,16 +34,16 @@ const Searchbar = () => {
 
     if(!isValidLink) return alert('Please provide a valid Amazon link')
 
-    // try {
-    //   setIsLoading(true);
+    try {
+      setIsLoading(true);
 
-    //   // Scrape the product page
-    //   const product = await scrapeAndStoreProduct(searchPrompt);
-    // } catch (error) {
-    //   console.log(error);
-    // } finally {
-    //   setIsLoading(false);
-    // }
+      // Scrape the product page
+      const product = await scrapeAndStoreProduct(searchPrompt);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
